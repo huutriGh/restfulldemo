@@ -5,6 +5,7 @@ import com.example.restfull.dto.LoginRequest;
 import com.example.restfull.dto.LoginResponse;
 import com.example.restfull.dto.TransferReponse;
 import com.example.restfull.dto.TransferRequest;
+import com.example.restfull.helper.JwtToken;
 import com.example.restfull.model.Account;
 import com.example.restfull.model.SaveTransaction;
 import com.example.restfull.repository.IRepository;
@@ -36,6 +37,7 @@ public class AccountServiceImpl implements AccountService {
             response.setBalance(account.getBalance());
             response.setAccountName(account.getAccountName());
             response.setAccountNo(account.getAccountNo());
+            response.setToken(JwtToken.createJWT(account));
         }
         return response;
     }
@@ -62,9 +64,8 @@ public class AccountServiceImpl implements AccountService {
         saveTransaction.setAccountNo(transaction.getAccountSource());
         saveTransaction.setAmount(transaction.getAmount());
         saveTransaction.setComment(transaction.getComment());
-        Date date = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        saveTransaction.setTrandate(simpleDateFormat.format(date));
+
+        saveTransaction.setTrandate(new Date());
         //saveTransaction.setAccount(source);
 
 

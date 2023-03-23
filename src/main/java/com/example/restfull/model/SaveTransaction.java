@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.Date;
+
 
 @Setter
 @Getter
@@ -22,8 +24,8 @@ public class SaveTransaction {
     @Column(name = "Id", columnDefinition = "int")
     private int id;
 
-    @Column(name = "TranDate", columnDefinition = "varchar(50)")
-    private String trandate;
+    @Column(name = "TranDate", columnDefinition = "Date")
+    private Date trandate;
 
     @Column(name = "Amount", columnDefinition = "decimal(15,2)")
     private double amount;

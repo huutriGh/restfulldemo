@@ -18,4 +18,6 @@ public class LoginResponse {
     private  String pinCode;
 
     private  double balance;
+
+    private String token;
 }

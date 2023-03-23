@@ -1,5 +1,6 @@
 package com.example.restfull;
 
+import com.example.restfull.anotation.Secured;
 import com.example.restfull.dto.LoginRequest;
 import com.example.restfull.dto.LoginResponse;
 import com.example.restfull.dto.TransferReponse;
@@ -17,6 +18,7 @@ public class BankResource {
     @Path("/login")
     @Produces("application/json")
     @Consumes("application/json")
+
     public LoginResponse login(LoginRequest loginRequest) {
        return  accountService.login(loginRequest);
     }
@@ -25,7 +27,8 @@ public class BankResource {
     @Path("/transfer")
     @Produces("application/json")
     @Consumes("application/json")
-    public TransferReponse tranfer(TransferRequest transferRequest ) {
+    @Secured
+    public TransferReponse transfer(TransferRequest transferRequest ) {
         return  accountService.transfer(transferRequest);
     }
 }
